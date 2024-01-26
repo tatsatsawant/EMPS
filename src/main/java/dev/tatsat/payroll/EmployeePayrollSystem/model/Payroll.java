@@ -1,5 +1,6 @@
 package dev.tatsat.payroll.EmployeePayrollSystem.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -22,11 +23,11 @@ public class Payroll {
     @Column(name = "net_pay")
     private double netPay;
 
-    @Column(name = "pay_period", unique = true)
+    @Column(name = "pay_period")
     private String payPeriod;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "employee_id", referencedColumnName = "id")
     private Employee employee;
-
 }

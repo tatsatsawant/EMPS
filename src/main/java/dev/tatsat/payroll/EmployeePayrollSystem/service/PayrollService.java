@@ -1,8 +1,10 @@
 package dev.tatsat.payroll.EmployeePayrollSystem.service;
 
 import dev.tatsat.payroll.EmployeePayrollSystem.model.Payroll;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 
 public interface PayrollService {
 
