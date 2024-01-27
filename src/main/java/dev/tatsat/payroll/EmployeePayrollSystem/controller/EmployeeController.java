@@ -1,4 +1,5 @@
 package dev.tatsat.payroll.EmployeePayrollSystem.controller;
+
 import dev.tatsat.payroll.EmployeePayrollSystem.model.Employee;
 import dev.tatsat.payroll.EmployeePayrollSystem.service.EmployeeService;
 import jakarta.validation.Valid;
@@ -16,30 +17,30 @@ public class EmployeeController {
     EmployeeService employeeService;
 
     @PostMapping("/employee")
-    public ResponseEntity<Employee> newEmployee(@RequestBody @Valid Employee newEmployee){
+    public ResponseEntity<Employee> newEmployee(@RequestBody @Valid Employee newEmployee) {
         Employee employee = employeeService.addEmployee(newEmployee);
         return new ResponseEntity<>(employee, HttpStatus.CREATED);
     }
 
     @GetMapping("employee/{id}")
-    public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id){
+    public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id) {
         Employee employee = employeeService.getEmployeeById(id);
         return new ResponseEntity<>(employee, HttpStatus.OK);
     }
 
     @GetMapping("/employee")
-    public ResponseEntity<List<Employee>> getAllEmployees(){
+    public ResponseEntity<List<Employee>> getAllEmployees() {
         return new ResponseEntity<>(employeeService.getAllEmployees(), HttpStatus.OK);
     }
 
     @DeleteMapping("employee/{id}")
-    public ResponseEntity<HttpStatus> removeEmployee(@PathVariable Long id){
+    public ResponseEntity<HttpStatus> removeEmployee(@PathVariable Long id) {
         employeeService.deleteEmployee(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @PutMapping("employee/{id}")
-    public ResponseEntity<Employee> updateEmployeeById(@PathVariable Long id, @RequestBody Employee employeeDetails){
+    public ResponseEntity<Employee> updateEmployeeById(@PathVariable Long id, @RequestBody Employee employeeDetails) {
         Employee emp = employeeService.updateEmployee(id, employeeDetails);
         return new ResponseEntity<>(emp, HttpStatus.OK);
     }
